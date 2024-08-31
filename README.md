@@ -1,4 +1,4 @@
-![\[!image\](https://media.discordapp.net/attachments/1183838101030834416/1279128654500335657/image-111.png?ex=66d3f9a4&is=66d2a824&hm=5232519c7ec733c9e3258b2bad3aa28dee5ba4ad5d13f03a4c4bc810f084df8a&=&format=webp&quality=lossless&width=914&height=343)]([https://i.imgur.com/SU7QypZ.png](https://media.discordapp.net/attachments/1183838101030834416/1279128654500335657/image-111.png?ex=66d3f9a4&is=66d2a824&hm=5232519c7ec733c9e3258b2bad3aa28dee5ba4ad5d13f03a4c4bc810f084df8a&=&format=webp&quality=lossless&width=914&height=343))
+
 
 # Nexion Labs Panel
 
