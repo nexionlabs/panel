@@ -1,24 +1,22 @@
-![\[!image\](https://i.imgur.com/SU7QypZ.png)](https://i.imgur.com/SU7QypZ.png)
+![\[!image\](https://media.discordapp.net/attachments/1183838101030834416/1279128654500335657/image-111.png?ex=66d3f9a4&is=66d2a824&hm=5232519c7ec733c9e3258b2bad3aa28dee5ba4ad5d13f03a4c4bc810f084df8a&=&format=webp&quality=lossless&width=914&height=343)]([https://i.imgur.com/SU7QypZ.png](https://media.discordapp.net/attachments/1183838101030834416/1279128654500335657/image-111.png?ex=66d3f9a4&is=66d2a824&hm=5232519c7ec733c9e3258b2bad3aa28dee5ba4ad5d13f03a4c4bc810f084df8a&=&format=webp&quality=lossless&width=914&height=343))
 
-![Discord](https://img.shields.io/discord/1253782902618194011?label=Discord&logo=Discord&logoColor=white&style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/skyportlabs/panel?style=for-the-badge)
-
-# Skyport Panel
+# Nexion Labs Panel
 
 ## Overview
-Skyport is an open source panel for managing and operating game servers and applications built using Node.js with Express and Dockerode. [Click here to join our Discord.](https://discord.gg/skyport)
+Nexpanbel is an open source panel for managing and operating game servers and applications built using Node.js with Express and Dockerode. [Based on skyport.](https://discord.gg/skyport)
 
 ## Installation
-You can read our documentation at [skyport.dev](https://skyport.dev)
+You can read Skyport's documentation at [skyport.dev](https://skyport.dev)
 
 ## Configuration
 Edit the `config.json` file in the root directory to set up the application settings including the database connection and port.
 
 ## Usage
-Navigate to `http://localhost:<port>` to access the Skyport Panel. Log in with your user credentials to manage and view instances.
+Navigate to `http://localhost:<port>` to access the Nexion's Panel. Log in with your user credentials to manage and view instances.
 
 ## Contributing
 Contributions are welcome. Please fork the repository and submit pull requests with your proposed changes.
 
 ## License
 (c) 2024 Matt James and contributors. All rights reserved. Licensed under the MIT License.
+(c) 2024 Nexion Labs and contributors. All rights reserved. Licensed under the MIT License
