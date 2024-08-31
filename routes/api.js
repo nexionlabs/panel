@@ -10,7 +10,7 @@ const saltRounds = 10;
 // Middleware to check for a valid API key
 async function validateApiKey(req, res, next) {
   const apiKey = req.headers['x-api-key'];
-  
+
   if (!apiKey) {
     return res.status(401).json({ error: 'API key is required' });
   }
@@ -50,7 +50,7 @@ router.post('/api/getUser', validateApiKey, async (req, res) => {
     }
 
     const users = await db.get('users') || [];
-    
+
     let user;
     if (type === 'email') {
       user = users.find(user => user.email === value);
@@ -59,11 +59,11 @@ router.post('/api/getUser', validateApiKey, async (req, res) => {
     } else {
       return res.status(400).json({ error: 'Invalid search type. Use "email" or "username".' });
     }
-    
+
     if (!user) {
       return res.status(400).json({ error: 'User not found' });
     }
-    
+
     res.status(201).json(user);
   } catch (error) {
     console.error('Error retrieving user:', error);
@@ -73,24 +73,21 @@ router.post('/api/getUser', validateApiKey, async (req, res) => {
 
 router.post('/api/users/create', validateApiKey, async (req, res) => {
   try {
-    const { username, email, password, userId, admin } = req.body;
-    
+    const { username, email, password, admin } = req.body;
+
     if (!username || !email || !password) {
       return res.status(400).json({ error: 'Username and password are required' });
     }
 
-    const userExists = await db.get('users').then(users => 
+    let userId = req.body.userId || uuidv4();
+
+    const userExists = await db.get('users').then(users =>
       users && users.some(user => user.username === username)
     );
 
     if (userExists) {
       return res.status(409).json({ error: 'User already exists' });
     }
-
-    if (!req.body.userId) {
-      userId = uuidv4();
-    }
-
     const user = {
       userId: userId,
       username,
@@ -106,6 +103,7 @@ router.post('/api/users/create', validateApiKey, async (req, res) => {
 
     res.status(201).json({ userId: user.userId, email, username: user.username, admin: user.admin });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to create user' });
   }
 });
@@ -160,7 +158,7 @@ router.post('/api/instances/deploy', validateApiKey, async (req, res) => {
         username: 'Skyport',
         password: Node.apiKey
       },
-      headers: { 
+      headers: {
         'Content-Type': 'application/json'
       },
       data: {
@@ -236,17 +234,17 @@ router.post('/api/instances/deploy', validateApiKey, async (req, res) => {
 
 router.delete('/api/instance/delete', validateApiKey, async (req, res) => {
   const { id } = req.body;
-  
+
   try {
     if (!id) {
       return res.status(400).json({ error: 'Missing ID parameter' });
     }
-    
+
     const instance = await db.get(id + '_instance');
     if (!instance) {
       return res.status(400).json({ error: 'Instance not found' });
     }
-    
+
     await deleteInstance(instance);
     res.status(201).json({ Message: 'The instance has successfully been deleted.' });
   } catch (error) {
@@ -261,7 +259,7 @@ router.post('/api/getUserInstance', validateApiKey, async (req, res) => {
     return res.status(400).json({ error: 'Parameter "userId" is required' });
   }
 
-  const userExists = await db.get('users').then(users => 
+  const userExists = await db.get('users').then(users =>
     users && users.some(user => user.userId === userId)
   );
 
@@ -284,7 +282,7 @@ router.post('/api/getInstance', validateApiKey, async (req, res) => {
     return res.status(400).json({ error: 'Parameter "id" is required' });
   }
 
-  const instanceExists = await db.get('instances').then(server => 
+  const instanceExists = await db.get('instances').then(server =>
     server && server.some(server => server.ContainerId === id)
   );
 
@@ -378,17 +376,17 @@ router.delete('/api/nodes/delete', validateApiKey, async (req, res) => {
 async function deleteInstance(instance) {
   try {
     await axios.get(`http://Skyport:${instance.Node.apiKey}@${instance.Node.address}:${instance.Node.port}/instances/${instance.ContainerId}/delete`);
-    
+
     // Update user's instances
     let userInstances = await db.get(instance.User + '_instances') || [];
     userInstances = userInstances.filter(obj => obj.ContainerId !== instance.ContainerId);
     await db.set(instance.User + '_instances', userInstances);
-    
+
     // Update global instances
     let globalInstances = await db.get('instances') || [];
     globalInstances = globalInstances.filter(obj => obj.ContainerId !== instance.ContainerId);
     await db.set('instances', globalInstances);
-    
+
     // Delete instance-specific data
     await db.delete(instance.ContainerId + '_instance');
   } catch (error) {
@@ -414,7 +412,7 @@ async function checkNodeStatus(node) {
         username: 'Skyport',
         password: node.apiKey
       },
-      headers: { 
+      headers: {
         'Content-Type': 'application/json'
       }
     };

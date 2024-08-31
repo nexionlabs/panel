@@ -1,4 +1,4 @@
 const Keyv = require('keyv');
-const db = new Keyv('sqlite://skyport.db');
+const db = new Keyv('sqlite://nexion.db');
 
 module.exports = { db }

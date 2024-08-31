@@ -1,46 +1,58 @@
 <!doctype html>
 <html class="h-full w-full">
-   <head>
-      <title><%= name %></title>
-      <link rel="icon" href="./public/assets/logo.png" type="image/x-icon">
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta content="<%= ogTitle %>" property="og:title">
-      <meta content="<%= ogDescription %>" property="og:description">
-      <link href="/assets/tailwind.css" rel="stylesheet">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link rel="preconnect" href="https://cdn.fontshare.com">
-      <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,300,600,400,700&display=swap" rel="stylesheet">
-      <link href="https://fonts.cdnfonts.com/css/graphik-trial" rel="stylesheet">
-   </head>
-   <body style="font-family: 'General Sans'" class="bg-[#141414] h-full w-full">
-      <div>
+
+<head>
+   <title>
+      <%= name %>
+   </title>
+   <link rel="icon" href="./public/assets/logo.png" type="image/x-icon">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta content="Nexion Labs" property="og:title">
+   <meta content="" property="og:description">
+   <link href="/assets/tailwind.css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preconnect" href="https://cdn.fontshare.com">
+   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,300,600,400,700&display=swap" rel="stylesheet">
+   <link href="https://fonts.cdnfonts.com/css/graphik-trial" rel="stylesheet">
+</head>
+
+<body style="font-family: 'General Sans'" class="bg-[#141414] h-full w-full">
+   <div>
       <style>
          .collapsed span {
             display: none;
          }
+
          .collapsed p {
             display: none;
          }
+
          .collapsed h1 {
             display: none;
          }
+
          .collapsed .nav-link svg {
             margin-right: 0;
          }
+
          .collapsed {
             width: 4% !important;
          }
+
          .colcont {
             padding-left: 4.2rem
          }
+
          .transition {
             transition: all 0.3s ease-in-out;
          }
+
          .sidebar nav ul {
             position: relative;
          }
+
          #active-background {
             position: absolute;
             left: 1rem;
@@ -51,14 +63,17 @@
             transition: transform 0.2s ease-in-out;
             z-index: 0;
          }
+
          .nav-link {
             position: relative;
             z-index: 1;
          }
+
          .nav-link.active {
             color: white;
             font-weight: 500;
          }
+
          @media (max-width: 1024px) {
             .sidebar {
                display: none;
@@ -71,13 +86,16 @@
                transform: translateX(-100%);
                transition: transform 0.3s ease-in-out;
             }
+
             .sidebar.open {
                display: block;
                transform: translateX(0);
             }
+
             #sidebar-toggle {
                display: block;
             }
+
             .sidebar.expanded {
                width: 100%;
             }
@@ -98,7 +116,7 @@
             function getCookie(name) {
                const nameEQ = name + "=";
                const ca = document.cookie.split(';');
-               for(let i = 0; i < ca.length; i++) {
+               for (let i = 0; i < ca.length; i++) {
                   let c = ca[i];
                   while (c.charAt(0) === ' ') c = c.substring(1, c.length);
                   if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
@@ -143,15 +161,17 @@
             setTimeout(() => {
                loader.classList.add('opacity-0');
                content.classList.remove('opacity-0');
-               
+
                setTimeout(() => {
                   loader.style.display = 'none';
                }, 150);
             }, 300);
          });
       </script>
-      <button id="mobile-sidebar-toggle" class="lg:hidden fixed top-4 left-4 z-50 w-fit p-2 rounded-xl text-white border border-white/5 bg-[#141414] hover:scale-110 active:scale-100 duration-200 transition-all">
-         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+      <button id="mobile-sidebar-toggle"
+         class="lg:hidden fixed top-4 left-4 z-50 w-fit p-2 rounded-xl text-white border border-white/5 bg-[#141414] hover:scale-110 active:scale-100 duration-200 transition-all">
+         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
          </svg>
       </button>
@@ -161,83 +181,182 @@
             <nav class="flex flex-1 flex-col">
                <div class="pl-6 pt-5 pb-4 flex">
                   <a href="/" class="flex">
-                     <% if (logo == true) { %>
-                     <img src="../assets/logo.png" class="h-7 w-7 rounded mr-3 inline-flex">
-                     <% } %>
-                     <h1 class="text-white font-medium tracking-tight text-lg"><%= name %></h1>
+                     <% if (logo==true) { %>
+                        <img src="../assets/logo.png" class="h-7 w-7 rounded mr-3 inline-flex">
+                        <% } %>
+                           <h1 class="text-white font-medium tracking-tight text-lg">
+                              <%= name %>
+                           </h1>
                   </a>
                </div>
                <ul role="list" class="flex flex-1 flex-col gap-y-7">
                   <li>
                      <ul role="list" class="-mx-2 space-y-1">
-                        <div id="active-background" class="absolute left-0 w-full h-8 bg-[#171717] rounded-2xl transition-all duration-300 ease-in-out"></div>
+                        <div id="active-background"
+                           class="absolute left-0 w-full h-8 bg-[#171717] rounded-2xl transition-all duration-300 ease-in-out">
+                        </div>
                         <li>
-                           <a href="/instances" class="transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal" searchdata="container instances servers" subterm="jegli:/server/servername">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M220,169.09l-92,53.65L36,169.09A8,8,0,0,0,28,182.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,169.09Z"/><path d="M220,121.09l-92,53.65L36,121.09A8,8,0,0,0,28,134.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,121.09Z"/><path d="M28,86.91l96,56a8,8,0,0,0,8.06,0l96-56a8,8,0,0,0,0-13.82l-96-56a8,8,0,0,0-8.06,0l-96,56a8,8,0,0,0,0,13.82Z"/></svg>
-                              <span><%= req.translations.instances %></span>
+                           <a href="/instances"
+                              class="transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal"
+                              searchdata="container instances servers" subterm="jegli:/server/servername">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                 class="w-5 mt-0.5 h-5">
+                                 <rect width="256" height="256" fill="none" />
+                                 <path
+                                    d="M220,169.09l-92,53.65L36,169.09A8,8,0,0,0,28,182.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,169.09Z" />
+                                 <path
+                                    d="M220,121.09l-92,53.65L36,121.09A8,8,0,0,0,28,134.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,121.09Z" />
+                                 <path
+                                    d="M28,86.91l96,56a8,8,0,0,0,8.06,0l96-56a8,8,0,0,0,0-13.82l-96-56a8,8,0,0,0-8.06,0l-96,56a8,8,0,0,0,0,13.82Z" />
+                              </svg>
+                              <span>
+                                 <%= req.translations.instances %>
+                              </span>
                            </a>
-                           <a href="/account" searchdata="account profile <%= user.username %>" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="w-5 mt-0.5 h-5" viewBox="0 0 256 256"><path d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"></path></svg>
-                              <span><%= req.translations.account %></span>
+                           <a href="/account" searchdata="account profile <%= user.username %>"
+                              class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                 class="w-5 mt-0.5 h-5" viewBox="0 0 256 256">
+                                 <path
+                                    d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z">
+                                 </path>
+                              </svg>
+                              <span>
+                                 <%= req.translations.account %>
+                              </span>
                            </a>
                         </li>
-                        <% if (user.admin == true) { %>
-                        <p class="pl-8 text-neutral-400 text-xs font-medium pt-6 pb-2"><span>Admin Panel</span></p>
-                        <li>
-                           <a href="/admin/overview" searchdata="admin overview control" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z"/></svg>
-                              <span><%= req.translations.overview %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/settings" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"/></svg>
-                              <span><%= req.translations.settings %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/users" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"/></svg>
-                              <span><%= req.translations.users %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/instances" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M24,80a8,8,0,0,1,4-6.91l96-56a8,8,0,0,1,8.06,0l96,56a8,8,0,0,1,0,13.82l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,24,80Zm196,41.09-92,53.65L36,121.09A8,8,0,0,0,28,134.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,121.09ZM232,192H216V176a8,8,0,0,0-16,0v16H184a8,8,0,0,0,0,16h16v16a8,8,0,0,0,16,0V208h16a8,8,0,0,0,0-16Zm-92,23.76-12,7L36,169.09A8,8,0,0,0,28,182.91l96,56a8,8,0,0,0,8.06,0l16-9.33A8,8,0,1,0,140,215.76Z"/></svg>
-                              <span><%= req.translations.instances %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/nodes" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M208,40H48A16,16,0,0,0,32,56v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V56A16,16,0,0,0,208,40ZM180,92a12,12,0,1,1,12-12A12,12,0,0,1,180,92Z"/><path d="M208,136H48a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136Zm-28,52a12,12,0,1,1,12-12A12,12,0,0,1,180,188Z"/></svg>
-                              <span><%= req.translations.nodes %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/images" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63ZM84,96A12,12,0,1,1,96,84,12,12,0,0,1,84,96Z"/></svg>
-                              <span><%= req.translations.images %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/apikeys" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM180,92a16,16,0,1,1,16-16A16,16,0,0,1,180,92Z"/></svg>
-                              <span><%= req.translations.APIKeys %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/auditlogs" searchdata="audit logs admin" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M220.8,169.6A8,8,0,0,0,216,168h-8V64a32,32,0,0,0-32-32H40A32,32,0,0,0,8,64C8,77.61,18.05,85.54,19.2,86.4h0A7.89,7.89,0,0,0,24,88a8,8,0,0,0,4.87-14.33h0C28.83,73.62,24,69.74,24,64a16,16,0,0,1,32,0V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32C232,178.39,222,170.46,220.8,169.6ZM104,96h64a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16Zm-8,40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H104A8,8,0,0,1,96,136Zm104,72H107.71A31.82,31.82,0,0,0,112,192a26.92,26.92,0,0,0-1.21-8h102a12.58,12.58,0,0,1,3.23,8A16,16,0,0,1,200,208Z"/></svg>
-                              <span><%= req.translations.auditLogs %></span>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="/admin/plugins" searchdata="addons plugins admin" class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" class="w-5 mt-0.5 h-5"><rect width="256" height="256" fill="none"/><path d="M165.78,224H208a16,16,0,0,0,16-16V170.35A8,8,0,0,0,212.94,163a23.37,23.37,0,0,1-8.94,1.77c-13.23,0-24-11.1-24-24.73s10.77-24.73,24-24.73a23.37,23.37,0,0,1,8.94,1.77A8,8,0,0,0,224,109.65V72a16,16,0,0,0-16-16H171.78a35.36,35.36,0,0,0,.22-4,36,36,0,0,0-72,0,35.36,35.36,0,0,0,.22,4H64A16,16,0,0,0,48,72v32.22a35.36,35.36,0,0,0-4-.22,36,36,0,0,0,0,72,35.36,35.36,0,0,0,4-.22V208a16,16,0,0,0,16,16h42.22"/></svg>
-                              <span><%= req.translations.plugins %></span>
-                           </a>
-                        </li>
-                        <% } %>
+                        <% if (user.admin==true) { %>
+                           <p class="pl-8 text-neutral-400 text-xs font-medium pt-6 pb-2"><span>Admin Panel</span></p>
+                           <li>
+                              <a href="/admin/overview" searchdata="admin overview control"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.overview %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/settings"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.settings %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/users"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.users %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/instances"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M24,80a8,8,0,0,1,4-6.91l96-56a8,8,0,0,1,8.06,0l96,56a8,8,0,0,1,0,13.82l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,24,80Zm196,41.09-92,53.65L36,121.09A8,8,0,0,0,28,134.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,121.09ZM232,192H216V176a8,8,0,0,0-16,0v16H184a8,8,0,0,0,0,16h16v16a8,8,0,0,0,16,0V208h16a8,8,0,0,0,0-16Zm-92,23.76-12,7L36,169.09A8,8,0,0,0,28,182.91l96,56a8,8,0,0,0,8.06,0l16-9.33A8,8,0,1,0,140,215.76Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.instances %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/nodes"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M208,40H48A16,16,0,0,0,32,56v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V56A16,16,0,0,0,208,40ZM180,92a12,12,0,1,1,12-12A12,12,0,0,1,180,92Z" />
+                                    <path
+                                       d="M208,136H48a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136Zm-28,52a12,12,0,1,1,12-12A12,12,0,0,1,180,188Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.nodes %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/images"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63ZM84,96A12,12,0,1,1,96,84,12,12,0,0,1,84,96Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.images %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/apikeys"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM180,92a16,16,0,1,1,16-16A16,16,0,0,1,180,92Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.APIKeys %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/auditlogs" searchdata="audit logs admin"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M220.8,169.6A8,8,0,0,0,216,168h-8V64a32,32,0,0,0-32-32H40A32,32,0,0,0,8,64C8,77.61,18.05,85.54,19.2,86.4h0A7.89,7.89,0,0,0,24,88a8,8,0,0,0,4.87-14.33h0C28.83,73.62,24,69.74,24,64a16,16,0,0,1,32,0V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32C232,178.39,222,170.46,220.8,169.6ZM104,96h64a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16Zm-8,40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H104A8,8,0,0,1,96,136Zm104,72H107.71A31.82,31.82,0,0,0,112,192a26.92,26.92,0,0,0-1.21-8h102a12.58,12.58,0,0,1,3.23,8A16,16,0,0,1,200,208Z" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.auditLogs %>
+                                 </span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/admin/plugins" searchdata="addons plugins admin"
+                                 class=" transition nav-link mt-1 text-neutral-400 px-4 mx-4 group flex gap-x-3 shadow-none py-1.5 rounded-xl shadow-sm text-sm leading-6 font-normal">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"
+                                    class="w-5 mt-0.5 h-5">
+                                    <rect width="256" height="256" fill="none" />
+                                    <path
+                                       d="M165.78,224H208a16,16,0,0,0,16-16V170.35A8,8,0,0,0,212.94,163a23.37,23.37,0,0,1-8.94,1.77c-13.23,0-24-11.1-24-24.73s10.77-24.73,24-24.73a23.37,23.37,0,0,1,8.94,1.77A8,8,0,0,0,224,109.65V72a16,16,0,0,0-16-16H171.78a35.36,35.36,0,0,0,.22-4,36,36,0,0,0-72,0,35.36,35.36,0,0,0,.22,4H64A16,16,0,0,0,48,72v32.22a35.36,35.36,0,0,0-4-.22,36,36,0,0,0,0,72,35.36,35.36,0,0,0,4-.22V208a16,16,0,0,0,16,16h42.22" />
+                                 </svg>
+                                 <span>
+                                    <%= req.translations.plugins %>
+                                 </span>
+                              </a>
+                           </li>
+                           <% } %>
                      </ul>
                   </li>
                   <!--<li>
@@ -264,11 +383,16 @@
                      </ul>
                      </li> -->
                   <li class="mt-auto border-t border-white/5">
-                     <a href="/auth/logout" class="group -mx-2 flex gap-x-3 rounded-xl pl-6 py-4 text-sm font-medium leading-6 text-neutral-500 transition hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 mt-0.5 h-5">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                     <a href="/auth/logout"
+                        class="group -mx-2 flex gap-x-3 rounded-xl pl-6 py-4 text-sm font-medium leading-6 text-neutral-500 transition hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                           stroke="currentColor" class="w-5 mt-0.5 h-5">
+                           <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                         </svg>
-                        <span><%= req.translations.signOut %></span>
+                        <span>
+                           <%= req.translations.signOut %>
+                        </span>
                      </a>
                   </li>
                </ul>
@@ -276,228 +400,250 @@
          </div>
       </div>
       <div id="colcont" class="lg:pl-56">
-      <div class="sticky backdrop-blur top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-transparent px-4 shadow-sm sm:gap-x-6 sm:px-4 lg:px-4">
-         <div class="hidden lg:block">
-         <button type="button" id="sidebar-toggle" class="hidden lg:block w-fit p-2 mt-1 rounded-xl text-white border border-white/5 hover:scale-110 active:scale-100 duration-200">
-            <span class="sr-only">Open sidebar</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-         </button>
-      </div>
-         <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-            <div class="relative flex flex-1 flex-col">
-               <div class="ml-14 lg:-ml-2 flex items-center w-fit mt-3.5 px-4 py-2 h-10  rounded-xl border border-white/5  active:scale-100 duration-200 bg-transparent text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-neutral-400">
-                     <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
+         <div
+            class="sticky backdrop-blur top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-transparent px-4 shadow-sm sm:gap-x-6 sm:px-4 lg:px-4">
+            <div class="hidden lg:block">
+               <button type="button" id="sidebar-toggle"
+                  class="hidden lg:block w-fit p-2 mt-1 rounded-xl text-white border border-white/5 hover:scale-110 active:scale-100 duration-200">
+                  <span class="sr-only">Open sidebar</span>
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                     aria-hidden="true">
+                     <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                   </svg>
-                  <input id="searchInput" 
-                     class="bg-transparent border-transparent focus-visible:ring-transparent border-none ring-transparent sm:text-sm placeholder:text-zinc-500" 
-                     placeholder="<%= req.translations.search %>" 
-                     type="search" 
-                     name="search"
-                     autocomplete="off"
-                     onclick="input.blur()"
-                     onfocus="showSearchResults()">
-               </div>
-               <div id="searchResults" class="absolute bg-white w-[12.5rem] rounded-xl shadow-lg hidden mt-20 px-2 pb-2">
-               </div>
+               </button>
             </div>
-            <script src="/javascript/search/index.js"></script>
-            <script>
-               document.addEventListener('keydown', function(event) {
-                 if (event.key === 'F1') {
-                   event.preventDefault();
-                   document.getElementById('searchInput').focus();
-                 }
-               });
-               
-               function showSearchResults() {
-                 document.getElementById('searchResults').classList.remove('hidden');
-               }
-               
-               document.getElementById('searchInput').addEventListener('focus', showSearchResults);
-            </script>
-            <script>
-               function showSearchResults() {
-                   var searchResults = document.getElementById('searchResults');
-                   searchResults.classList.remove('hidden');
-               }
-               
-               document.addEventListener('click', function(event) {
-                   var searchInput = document.getElementById('searchInput');
-                   var searchResults = document.getElementById('searchResults');
-                   if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-                       searchResults.classList.add('hidden');
-                   }
-               });
-            </script>
+            <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+               <div class="relative flex flex-1 flex-col">
+                  <div
+                     class="ml-14 lg:-ml-2 flex items-center w-fit mt-3.5 px-4 py-2 h-10  rounded-xl border border-white/5  active:scale-100 duration-200 bg-transparent text-white">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="h-5 w-5 text-neutral-400">
+                        <path fill-rule="evenodd"
+                           d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                           clip-rule="evenodd" />
+                     </svg>
+                     <input id="searchInput"
+                        class="bg-transparent border-transparent focus-visible:ring-transparent border-none ring-transparent sm:text-sm placeholder:text-zinc-500"
+                        placeholder="<%= req.translations.search %>" type="search" name="search" autocomplete="off"
+                        onclick="input.blur()" onfocus="showSearchResults()">
+                  </div>
+                  <div id="searchResults"
+                     class="absolute bg-white w-[12.5rem] rounded-xl shadow-lg hidden mt-20 px-2 pb-2">
+                  </div>
+               </div>
+               <script src="/javascript/search/index.js"></script>
+               <script>
+                  document.addEventListener('keydown', function (event) {
+                     if (event.key === 'F1') {
+                        event.preventDefault();
+                        document.getElementById('searchInput').focus();
+                     }
+                  });
+
+                  function showSearchResults() {
+                     document.getElementById('searchResults').classList.remove('hidden');
+                  }
+
+                  document.getElementById('searchInput').addEventListener('focus', showSearchResults);
+               </script>
+               <script>
+                  function showSearchResults() {
+                     var searchResults = document.getElementById('searchResults');
+                     searchResults.classList.remove('hidden');
+                  }
+
+                  document.addEventListener('click', function (event) {
+                     var searchInput = document.getElementById('searchInput');
+                     var searchResults = document.getElementById('searchResults');
+                     if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+                        searchResults.classList.add('hidden');
+                     }
+                  });
+               </script>
 
 
-<div class="flex items-center gap-x-4 lg:gap-x-6">
-   <!-- Profile dropdown -->
-   <div class="relative mt-3 mr-4">
-     <button type="button" class="-m-1.5 flex items-center p-1.5" id="user-menu-button" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown()">
-       <img class="h-8 w-8 rounded-lg bg-transparent" src="https://api.dicebear.com/9.x/thumbs/svg?seed=<%= user.username %>" alt="">
-       <span class="hidden lg:flex lg:items-center ml-2.5 text-sm font-medium leading-6 text-white" aria-hidden="true">
-         <%= user.username %>
-         <span class="font-mono text-xs text-zinc-300 font-normal ml-1">(<%= user.userId.substring(0, 6) %>)</span>
-       </span>
-     </button>
-     <div id="dropdown-menu" class="hidden absolute right-0 z-10 mt-2 w-56 bg-white rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none pb-2 transform opacity-0 scale-95 transition-all duration-200 ease-out">
-       <div class="p-4">
-         <div class="py-1 px-1">
-           <label for="language-selector" class="block text-sm font-medium text-gray-700 mb-2">Language</label>
-           <div class="relative">
-             <select id="language-selector" class="appearance-none w-full bg-white border border-gray-300 rounded-md py-2 pl-2 pr-10 text-sm leading-5 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500" onchange="changeLanguage(this.value)">
-               
-               <% languages.forEach(function(language) { %>
-                  <option value="<%= language %>" 
-                    <%= (req.cookies.lang ? req.cookies.lang : 'en') === language ? 'selected' : '' %>>
-                    <%= req.translations[language] %>
-                  </option>
-                <% }); %>
-                
-             </select>
-           </div>
+               <div class="flex items-center gap-x-4 lg:gap-x-6">
+                  <!-- Profile dropdown -->
+                  <div class="relative mt-3 mr-4">
+                     <button type="button" class="-m-1.5 flex items-center p-1.5" id="user-menu-button"
+                        aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown()">
+                        <img class="h-8 w-8 rounded-lg bg-transparent"
+                           src="https://api.dicebear.com/9.x/thumbs/svg?seed=<%= user.username %>" alt="">
+                        <span class="hidden lg:flex lg:items-center ml-2.5 text-sm font-medium leading-6 text-white"
+                           aria-hidden="true">
+                           <%= user.username %>
+                              <span class="font-mono text-xs text-zinc-300 font-normal ml-1">(<%=
+                                    user.userId.substring(0, 6) %>)</span>
+                        </span>
+                     </button>
+                     <div id="dropdown-menu"
+                        class="hidden absolute right-0 z-10 mt-2 w-56 bg-white rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none pb-2 transform opacity-0 scale-95 transition-all duration-200 ease-out">
+                        <div class="p-4">
+                           <div class="py-1 px-1">
+                              <label for="language-selector"
+                                 class="block text-sm font-medium text-gray-700 mb-2">Language</label>
+                              <div class="relative">
+                                 <select id="language-selector"
+                                    class="appearance-none w-full bg-white border border-gray-300 rounded-md py-2 pl-2 pr-10 text-sm leading-5 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
+                                    onchange="changeLanguage(this.value)">
+
+                                    <% languages.forEach(function(language) { %>
+                                       <option value="<%= language %>" <%=(req.cookies.lang ? req.cookies.lang : 'en'
+                                          )===language ? 'selected' : '' %>>
+                                          <%= req.translations[language] %>
+                                       </option>
+                                       <% }); %>
+
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <style>
+                  .flag-icon {
+                     width: 20px;
+                     height: 15px;
+                     background-size: cover;
+                     background-position: center;
+                  }
+
+                  .flag-icon-de {
+                     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1IDMiPjxwYXRoIGQ9Ik0wIDBoNXYxSDB6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTAgMWg1djFIMHoiIGZpbGw9IiNEMDAiLz48cGF0aCBkPSJNMCAyaDV2MUgweiIgZmlsbD0iI0ZGQ0UwMCIvPjwvc3ZnPg==');
+                  }
+
+                  .flag-icon-en {
+                     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjM1IDY1MCI+PHBhdGggZmlsbD0iIzAxMjE2OSIgZD0iTTAgMGgxMjM1djY1MEgweiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0wIDc1aDEyMzV2MjVIMHptMCAxMjVoMTIzNXYyNUgwem0wIDEyNWgxMjM1djI1SDB6bTAgMTI1aDEyMzV2MjVIMHptMCAxMjVoMTIzNXYyNUgweiIvPjxwYXRoIGZpbGw9IiNDODEwMkUiIGQ9Ik0wIDEwMGgxMjM1djI1SDB6bTAgMTI1aDEyMzV2MjVIMHptMCAxMjVoMTIzNXYyNUgwem0wIDEyNWgxMjM1djI1SDB6bTAgMTI1aDEyMzV2MjVIMHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMCAwaDQ5NHYzNTBIMHoiLz48ZyBmaWxsPSIjQzgxMDJFIj48cGF0aCBkPSJNMjIwIDAgMCA2MHYzNWwyMjAgNzVMMCA1OXY0NGwyMjAgOTR6Ii8+PHBhdGggZD0iTTI3NCAwdjE4MEgwdjQ0aDI3NHYxMjZoNDRWMjI0aDQ5NHYtNDRINTE4VjBoLTQ0djEyNkgwdjQ0aDQ3NFYweiIvPjwvZz48L3N2Zz4=');
+                  }
+
+                  .flag-icon-nl {
+                     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5IDYiPjxwYXRoIGZpbGw9IiMyMTQ2OEIiIGQ9Ik0wIDBoOXYySDB6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTAgMmg5djJIMHoiLz48cGF0aCBmaWxsPSIjQUUxQzI4IiBkPSJNMCA0aDl2MkgweiIvPjwvc3ZnPg==');
+                  }
+               </style>
+
+               <script>
+                  function toggleDropdown() {
+                     const dropdownMenu = document.getElementById('dropdown-menu');
+                     dropdownMenu.classList.toggle('hidden');
+                     if (!dropdownMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                           dropdownMenu.style.transform = 'scale(1)';
+                           dropdownMenu.style.opacity = '1';
+                        }, 10);
+                     } else {
+                        dropdownMenu.style.transform = 'scale(0.95)';
+                        dropdownMenu.style.opacity = '0';
+                     }
+                  }
+
+                  function updateSelectedFlag() {
+                     const select = document.getElementById('language-selector');
+                     const selectedFlag = document.getElementById('selected-flag');
+                     selectedFlag.className = `flag-icon flag-icon-${select.value}`;
+                  }
+
+                  function changeLanguage(lang) {
+                     fetch(`/setLanguage?lang=${lang}`)
+                        .then(response => response.json())
+                        .then(data => {
+                           if (data.success) {
+                              updateSelectedFlag();
+                              location.reload();
+                           } else {
+                              alert('Failed to change language');
+                           }
+                        });
+                  }
+
+                  // Initialize the selected flag on page load
+                  document.addEventListener('DOMContentLoaded', updateSelectedFlag);
+
+                  // Optional: Close the dropdown when clicking outside
+                  window.addEventListener('click', function (e) {
+                     const userMenuButton = document.getElementById('user-menu-button');
+                     const dropdownMenu = document.getElementById('dropdown-menu');
+                     if (!userMenuButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                        dropdownMenu.classList.add('hidden');
+                        dropdownMenu.style.transform = 'scale(0.95)';
+                        dropdownMenu.style.opacity = '0';
+                     }
+                  });
+               </script>
+            </div>
          </div>
-       </div>
-     </div>
-   </div>
- </div>
- 
- <style>
-   .flag-icon {
-     width: 20px;
-     height: 15px;
-     background-size: cover;
-     background-position: center;
-   }
-   .flag-icon-de { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1IDMiPjxwYXRoIGQ9Ik0wIDBoNXYxSDB6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTAgMWg1djFIMHoiIGZpbGw9IiNEMDAiLz48cGF0aCBkPSJNMCAyaDV2MUgweiIgZmlsbD0iI0ZGQ0UwMCIvPjwvc3ZnPg=='); }
-   .flag-icon-en { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjM1IDY1MCI+PHBhdGggZmlsbD0iIzAxMjE2OSIgZD0iTTAgMGgxMjM1djY1MEgweiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0wIDc1aDEyMzV2MjVIMHptMCAxMjVoMTIzNXYyNUgwem0wIDEyNWgxMjM1djI1SDB6bTAgMTI1aDEyMzV2MjVIMHptMCAxMjVoMTIzNXYyNUgweiIvPjxwYXRoIGZpbGw9IiNDODEwMkUiIGQ9Ik0wIDEwMGgxMjM1djI1SDB6bTAgMTI1aDEyMzV2MjVIMHptMCAxMjVoMTIzNXYyNUgwem0wIDEyNWgxMjM1djI1SDB6bTAgMTI1aDEyMzV2MjVIMHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMCAwaDQ5NHYzNTBIMHoiLz48ZyBmaWxsPSIjQzgxMDJFIj48cGF0aCBkPSJNMjIwIDAgMCA2MHYzNWwyMjAgNzVMMCA1OXY0NGwyMjAgOTR6Ii8+PHBhdGggZD0iTTI3NCAwdjE4MEgwdjQ0aDI3NHYxMjZoNDRWMjI0aDQ5NHYtNDRINTE4VjBoLTQ0djEyNkgwdjQ0aDQ3NFYweiIvPjwvZz48L3N2Zz4='); }
-   .flag-icon-nl { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5IDYiPjxwYXRoIGZpbGw9IiMyMTQ2OEIiIGQ9Ik0wIDBoOXYySDB6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTAgMmg5djJIMHoiLz48cGF0aCBmaWxsPSIjQUUxQzI4IiBkPSJNMCA0aDl2MkgweiIvPjwvc3ZnPg=='); }
- </style>
- 
- <script>
-   function toggleDropdown() {
-     const dropdownMenu = document.getElementById('dropdown-menu');
-     dropdownMenu.classList.toggle('hidden');
-     if (!dropdownMenu.classList.contains('hidden')) {
-       setTimeout(() => {
-         dropdownMenu.style.transform = 'scale(1)';
-         dropdownMenu.style.opacity = '1';
-       }, 10);
-     } else {
-       dropdownMenu.style.transform = 'scale(0.95)';
-       dropdownMenu.style.opacity = '0';
-     }
-   }
+         <script>
+            document.addEventListener('DOMContentLoaded', function () {
+               const navLinks = document.querySelectorAll('.nav-link');
+               const activeBackground = document.getElementById('active-background');
+               const contentSection = document.getElementById('content');
+               let isAnimating = false;
 
-   function updateSelectedFlag() {
-     const select = document.getElementById('language-selector');
-     const selectedFlag = document.getElementById('selected-flag');
-     selectedFlag.className = `flag-icon flag-icon-${select.value}`;
-   }
+               function updateActiveLink(currentPath) {
+                  navLinks.forEach((link) => {
+                     if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active');
+                        const linkRect = link.getBoundingClientRect();
+                        const navRect = link.closest('ul').getBoundingClientRect();
+                        activeBackground.style.transform = `translateY(${linkRect.top - navRect.top}px)`;
+                     } else {
+                        link.classList.remove('active');
+                     }
+                  });
+               }
 
-   function changeLanguage(lang) {
-     fetch(`/setLanguage?lang=${lang}`)
-       .then(response => response.json())
-       .then(data => {
-         if (data.success) {
-           updateSelectedFlag();
-           location.reload();
-         } else {
-           alert('Failed to change language');
-         }
-       });
-   }
+               function animatePageTransition(href) {
+                  if (isAnimating) return;
+                  isAnimating = true;
 
-   // Initialize the selected flag on page load
-   document.addEventListener('DOMContentLoaded', updateSelectedFlag);
+                  contentSection.style.opacity = '0';
+                  contentSection.style.transform = 'translateX(-20px)';
 
-   // Optional: Close the dropdown when clicking outside
-   window.addEventListener('click', function(e) {
-     const userMenuButton = document.getElementById('user-menu-button');
-     const dropdownMenu = document.getElementById('dropdown-menu');
-     if (!userMenuButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
-       dropdownMenu.classList.add('hidden');
-       dropdownMenu.style.transform = 'scale(0.95)';
-       dropdownMenu.style.opacity = '0';
-     }
-   });
- </script>
-         </div>
-      </div>
-      <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-link');
-  const activeBackground = document.getElementById('active-background');
-  const contentSection = document.getElementById('content');
-  let isAnimating = false;
+                  setTimeout(() => {
+                     window.location.href = href;
+                  }, 10);
+               }
 
-  function updateActiveLink(currentPath) {
-    navLinks.forEach((link) => {
-      if (link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
-        const linkRect = link.getBoundingClientRect();
-        const navRect = link.closest('ul').getBoundingClientRect();
-        activeBackground.style.transform = `translateY(${linkRect.top - navRect.top}px)`;
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  }
+               navLinks.forEach(link => {
+                  link.addEventListener('click', (e) => {
+                     e.preventDefault();
+                     const href = link.getAttribute('href');
+                     animatePageTransition(href);
+                  });
+               });
 
-  function animatePageTransition(href) {
-    if (isAnimating) return;
-    isAnimating = true;
+               // Update active link on page load
+               updateActiveLink(window.location.pathname);
 
-    contentSection.style.opacity = '0';
-    contentSection.style.transform = 'translateX(-20px)';
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 10);
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const href = link.getAttribute('href');
-      animatePageTransition(href);
-    });
-  });
-
-  // Update active link on page load
-  updateActiveLink(window.location.pathname);
-
-  // Handle browser back/forward
-  window.addEventListener('popstate', () => {
-    updateActiveLink(window.location.pathname);
-  });
-});
-      </script>
-          <script>
+               // Handle browser back/forward
+               window.addEventListener('popstate', () => {
+                  updateActiveLink(window.location.pathname);
+               });
+            });
+         </script>
+         <script>
             function changeLanguage(lang) {
-                fetch(`/setLanguage?lang=${lang}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            location.reload();
-                        } else {
-                            alert('Failed to change language');
-                        }
-                    });
+               fetch(`/setLanguage?lang=${lang}`)
+                  .then(response => response.json())
+                  .then(data => {
+                     if (data.success) {
+                        location.reload();
+                     } else {
+                        alert('Failed to change language');
+                     }
+                  });
             }
-        </script>
+         </script>
 
-      <div id="loader" class="fixed ml-56 mt-16 inset-0 flex items-center justify-center bg-[#141414] transition-opacity duration-300 opacity-100 z-50">
-         <svg class="animate-spin h-5 w-5 text-white inline-flex"
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-               stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor"
-               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-            </path>
-         </svg>
-      </div>
+         <div id="loader"
+            class="fixed ml-56 mt-16 inset-0 flex items-center justify-center bg-[#141414] transition-opacity duration-300 opacity-100 z-50">
+            <svg class="animate-spin h-5 w-5 text-white inline-flex" xmlns="http://www.w3.org/2000/svg" fill="none"
+               viewBox="0 0 24 24">
+               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+               <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+               </path>
+            </svg>
+         </div>
